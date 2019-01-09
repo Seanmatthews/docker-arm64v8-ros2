@@ -86,9 +86,10 @@ RUN apt-get install --no-install-recommends -y \
   libpoco-dev
 
 # build ros2
+# ::Don't build tests, examples, or any graphics-based packages
 RUN colcon build --symlink-install --cmake-force-configure \
-           --packages-ignore test_communication \
-           --packages-ignore-regex "(^rviz|^rqt|^qt_|.*connext_).*" \
+           --packages-ignore ros1_bridge \
+           --packages-ignore-regex "(^test_|^examples_|^rviz|^rqt|^qt_|.*connext_|.*demo.*).*" \
            --base-paths ~/ros2ws/
 
 # cleanup
