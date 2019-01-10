@@ -90,6 +90,7 @@ RUN apt-get install --no-install-recommends -y \
 RUN colcon build --symlink-install --cmake-force-configure \
            --packages-ignore ros1_bridge \
            --packages-ignore-regex "(^test_|^examples_|^rviz|^rqt|^qt_|.*connext_|.*demo.*).*" \
+           --packages-select test_msgs \
            --base-paths ~/ros2ws/
 
 # cleanup
